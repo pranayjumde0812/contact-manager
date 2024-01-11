@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Verify OTP</title>
+</head>
+<body>
+<section>
+    <div id="forgot-pass">
+        <div class="container">
+            <div id="forgot-row" class="row justify-content-center align-items-center">
+                <div id="forgot-column" class="col-md-6">
+                    <div id="forgot-box" class="col-md-12">
+                        <!--OTP verification form-->
+
+                        <!--Email form-->
+                        <h3 class="text-center m-3">Verify OTP</h3>
+
+                        <!-- alert message box -->
+                        <div th:if="${session.otpSend}" class="alert alert-success text-center">
+                            <span th:text="${session.otpSend.content}"></span>
+                            <th:block th:text="${#session.removeAttribute('otpSend')}"></th:block>
+                        </div>
+
+                        <!-- alert message box -->
+                        <div th:if="${session.wrongOTP}" class="alert alert-danger text-center">
+                            <span th:text="${session.wrongOTP.content}"></span>
+                            <th:block th:text="${#session.removeAttribute('wrongOTP')}"></th:block>
+                        </div>
+
+                        <form th:action="@{/verify-otp}" method="post">
+
+                            <div class="form-group">
+                                <input name="otp" required type="text" placeholder="Enter OTP here..."
+                                       class="form-control">
+                            </div>
+
+                            <div class="container text-center mt-4">
+                                <button class="btn btn-success">Verify</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

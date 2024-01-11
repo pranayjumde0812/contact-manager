@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="normal/base-dashboard::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}">Profile</title>
+</head>
+<body>
+<section>
+
+    <div class="card mr-4">
+
+        <div class="card-body">
+
+            <div class="container text-right">
+
+                <form th:action="@{/user/index}" method="post">
+                    <button type="submit" class="btn btn-primary btn-sm" th:alt-title="Edit">
+                        <i style="color: #FFFFFF" class="fa-solid fa-pen-to-square">&nbsp;Edit</i>
+                    </button>
+                </form>
+
+            </div>
+            <div class="container text-center">
+                <img style="height: 150px; width: 150px" class="contact-list-profile-pic"
+                     th:src="@{'/img/'+${user.imageUrl}}">
+
+                <h3 class="mt-2"><span th:text="${user.name}"></span></h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <th scope="col">#USER ID</th>
+                            <th scope="col">USER-SCM-<span th:text="${user.userId}"></span></th>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Email</th>
+                            <th scope="col"><span th:text="${user.email}"></span></th>
+                        </tr>
+
+                        <tr>
+                            <th scope="col">Role</th>
+                            <th scope="col"><span th:text="${user.role}"></span></th>
+                        </tr>
+
+                        <tr>
+                            <th scope="col">About</th>
+                            <th scope="col"><span th:text="${user.about}"></span></th>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

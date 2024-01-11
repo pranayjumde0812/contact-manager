@@ -1,0 +1,72 @@
+@media only screen and (max-width: 600px) {
+    .sidebar {
+        display: none;
+        width: 80% !important;
+        background: #290f1a;
+        height: 100vh;
+        position: fixed;
+        padding-top: 20px;
+    }
+
+    .content {
+        margin-left: 0% !important;
+    }
+}
+
+
+.sidebar {
+    width: 18%;
+    background: #290f1a;
+    height: 100%;
+    position: fixed;
+    padding: 40px;
+}
+
+.sidebar a {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar a:hover {
+    background: cornflowerblue;
+}
+
+.sidebar .divider#one {
+    height: 1px;
+    width: 100%;
+    background: cornflowerblue;
+    margin-bottom: 10px;
+}
+
+.sidebar .divider#two {
+    height: 1px;
+    width: 100%;
+    background: cornflowerblue;
+    margin-top: 10px;
+}
+
+.sidebar a i {
+    margin-right: 7px;
+}
+
+.sidebar .crossBtn {
+    position: absolute;
+    top: 0;
+    right: 35px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.content {
+    margin-left: 20%;
+}
+
+/* save contact button */
+.bg-save-btn {
+    background: black;
+    color: #e2e2e2;
+}

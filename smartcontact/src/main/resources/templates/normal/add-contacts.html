@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="normal/base-dashboard::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}">Add-Contact</title>
+</head>
+<body>
+<section>
+    <div class="card mr-4">
+
+        <div class="card-body">
+
+            <!-- alert message box -->
+            <div th:if="${session.message}" th:classappend="${session.message.type}"
+                 class="alert text-center" role="alert">
+                <p class="text-center" th:text="${session.message.content}"></p>
+                <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+            </div>
+            <h1 class="text-center">Add Contact</h1>
+
+            <div class="container-fluid mt-1">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+
+                        <form th:object="${contact}"
+                              enctype="multipart/form-data"
+                              method="post"
+                              th:action="@{/user/add-contact}"
+                              class="mt-2">
+
+                            <!--    First Name -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text mr-2">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="firstName" name="name" placeholder="Enter Contact Name"
+                                       class="form-control">
+                            </div>
+
+                            <!--    Second Name -->
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text mr-2">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="secondName" name="secondName"
+                                       placeholder="Enter Contact Nickname"
+                                       class="form-control">
+                            </div>
+
+                            <!--    Phone Number -->
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text mr-2">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="phone" name="phone" placeholder="Enter Phone Number"
+                                       class="form-control">
+                            </div>
+
+                            <!--    Email Id-->
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text mr-2">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="email" name="email" placeholder="Enter Email Id"
+                                       class="form-control">
+                            </div>
+
+                            <!--    Work Details -->
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text mr-2">
+                                        <i class="fa-solid fa-briefcase"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="work" name="work" placeholder="Enter Work Details"
+                                       class="form-control">
+                            </div>
+
+                            <!--    Contact Image-->
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text mr-2">
+                                        <i class="fa-solid fa-image"></i>
+                                    </div>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name="profileImage" value="Profile Image">
+                                </div>
+                            </div>
+
+                            <!--    contact description -->
+                            <div class="input-group mt-3">
+                                <textarea id="mytextarea" placeholder="Enter Contact Description" name="description"
+                                          rows="10" class="form-control"></textarea>
+                            </div>
+
+                            <div class="container text-center mt-4">
+                                <button class="btn btn-outline-primary bg-save-btn">
+                                    Save Contact
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.tiny.cloud/1/uqo6djjr1i23yxap1p4u6crtn541nadff8schhfvgmbhurvb/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+</section>
+</body>
+</html>

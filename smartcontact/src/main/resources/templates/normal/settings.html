@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="normal/base-dashboard::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}">Settings</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <!-- alert message box -->
+                        <div th:if="${session.info}" th:classappend="${session.info.type}"
+                             class="alert text-center" role="alert">
+                            <p class="text-center" th:text="${session.info.content}"></p>
+                            <th:block th:text="${#session.removeAttribute('info')}"></th:block>
+                        </div>
+
+                        <h3 class="my-2">Change Password</h3>
+
+                        <form th:action="@{/user/settings/change-password}" method="post">
+                            <!--old password field-->
+
+                            <div class="form-group">
+                                <input name="oldPassword" type="text" class="form-control"
+                                       placeholder="Enter Old Password" required>
+                            </div>
+
+                            <!--new password field-->
+
+                            <div class="form-group">
+                                <input name="newPassword" type="text" class="form-control"
+                                       placeholder="Enter New Password" required>
+                            </div>
+
+                            <div class="container text-center">
+                                <button class="btn btn-success" type="submit">Change</button>
+                                <button class="btn btn-warning" type="reset">Reset</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}">Signup</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 offset-md-3">
+
+                <!-- Handling terms and conditions error // My Logic-->
+                <!--                <div class="container">-->
+                <!--                    <span th:text="${errorMsg}"></span>-->
+                <!--                </div>-->
+
+                <!-- Start of Card -->
+                <div class="my-card mt-1">
+
+                    <!-- Alert Message -->
+                    <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+                        <p class="text-center" th:text="${session.message.content}"></p>
+                        <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                    </div>
+
+                    <!-- LOGO Field -->
+                    <div class="container text-center">
+
+                        <img th:src="@{/img/signup.png}" height="50px" width="50px"/>
+
+                        <h1> Register Here </h1>
+
+                    </div>
+
+                    <!-- Form Started -->
+                    <form novalidate method="post" th:action="@{/register}" th:object="${user}">
+
+                        <!-- Name Field -->
+                        <div class="form-group">
+
+                            <label for="userName">Full Name</label>
+                            <input type="text" th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}"
+                                   class="form-control" id="userName" name="name"
+                                   placeholder="Enter full name " th:value="${user.name}"
+                                   required>
+
+                            <!--     Validation message here  after class append    -->
+                            <div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}"></div>
+
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group">
+
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                   placeholder="Enter email" th:value="${user.email}" required>
+
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="form-group">
+
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                   placeholder="Create password" required>
+
+                        </div>
+
+                        <!-- User About Field -->
+                        <div class="form-group">
+                                <textarea placeholder="Enter something about yourself" name="about"
+                                          rows="3" class="form-control" th:text="${user.about}"></textarea>
+                        </div>
+
+                        <!-- Terms & Conditions -->
+
+                        <div class="form-group form-check">
+                            <input type="checkbox" name="agreement" class="form-check-input" id="agreement">
+                            <lable for="agreement">
+                                Accept terms & conditions
+                            </lable>
+                        </div>
+
+
+                        <!-- Buttons Field -->
+                        <div class="container text-center">
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                            <button type="reset" class="btn bg-btn text-white">Reset</button>
+
+                        </div>
+
+                    </form>
+                    <!-- Form Ended -->
+
+                </div>
+                <!-- End of Card -->
+
+            </div>
+
+        </div>
+    </div>
+</section>
+</body>
+</html>

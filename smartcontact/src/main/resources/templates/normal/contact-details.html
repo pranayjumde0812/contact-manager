@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="normal/base-dashboard::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}">Settings</title>
+</head>
+<body>
+<section>
+    <div class="card mr-4">
+
+        <div class="card-body" th:if="${contactDetails}">
+
+            <!-- alert message box -->
+            <div th:if="${session.contactUpdated}" th:classappend="${session.contactUpdated.type}"
+                 class="alert text-center" role="alert">
+                <p class="text-center" th:text="${session.contactUpdated.content}"></p>
+                <th:block th:text="${#session.removeAttribute('contactUpdated')}"></th:block>
+            </div>
+
+            <div class="container text-center">
+                <img style="height: 150px; width: 150px" class="contact-list-profile-pic" th:src="@{'/img/'+${contactDetails.imageUrl}}">
+
+                <h3 class="mt-2"><span th:text="${contactDetails.name}"></span> (<span th:text="${contactDetails.secondName}"></span>)</h3>
+
+                <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">SCM2024A<span th:text="${contactDetails.contactId}"></span></th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Email</th>
+                        <th scope="col"><span th:text="${contactDetails.email}"></span></th>
+                    </tr>
+
+                    <tr>
+                        <th scope="col">Phone</th>
+                        <th scope="col"><span th:text="${contactDetails.phone}"></span></th>
+                    </tr>
+
+                    <tr>
+                        <th scope="col">Profession</th>
+                        <th scope="col"><span th:text="${contactDetails.work}"></span></th>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <div class="container text-right">
+
+                <form th:action="@{'/user/contact/update-contact/'+${currentPage}+'/'+${contactDetails.contactId}}" method="post">
+                    <button style="height: 50px; width: 50px" type="submit" class="btn btn-primary btn-sm" th:alt-title="Update">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                </form>
+
+                <a style="height: 50px; width: 50px" href="#" th:onclick="|deleteContactWithSweetAlert2(${contactDetails.contactId},${currentPage})|"
+                   class="text-center btn btn-danger btn-sm mt-2" th:alt-title="Delete">
+                    <i class="fa-solid fa-trash mt-3"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="text-center p-3 bg-danger text-white">
+            <span th:unless="${contactDetails}">
+                <h2>You don't have permission to see this contact details...</h2>
+                <h3>You are unauthorized user to access this contact</h3>
+            </span>
+        </div>
+
+    </div>
+</section>
+</body>
+</html>

@@ -17,4 +17,4 @@
 - EMAIL API
 
 # Learning and Experience 
-- Explore differnt technologies
+- Explore different technologies

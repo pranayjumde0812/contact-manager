@@ -16,6 +16,7 @@
 - Springboot
 - EMAIL API
 - IntelliJ IDEA
+- Git & GitHub
 
 # Learning and Experience 
 - Explored different technologies

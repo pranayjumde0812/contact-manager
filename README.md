@@ -1,7 +1,7 @@
 # Project : Contact Manager Application.
 - It is a web application which works to manage the contact details of a user.
 
-# Technologies and Frameworks used :
+# Technologies, Frameworks and Tools used :
 - Core Java (OOPS)
 - Advance Concept of Java
 - HTML5
@@ -15,6 +15,7 @@
 - Maven
 - Springboot
 - EMAIL API
+- IntelliJ IDEA
 
 # Learning and Experience 
-- Explore different technologies
+- Explored different technologies
